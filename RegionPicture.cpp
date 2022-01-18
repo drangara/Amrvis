@@ -204,21 +204,21 @@ void RegionPicture::APMakeImages(Palette *palptr) {
 
   // Updated old method. IOProc alone calls the function.
   // (RegionPicture is IO only, so done automatically.)
-//  calcTimeRange = dataServicesPtr->GetRegionsProfStats().MakeRegionBoxes(regionBoxes,
-//                                          allDataSizeH, sizePerRegionV);
-//  dataServicesPtr->GetRegionsProfStats().MakeRegionFArrayBox(tempSliceFab, allDataSizeH,
-//                                                            sizePerRegionV, regionBoxes);
+  calcTimeRange = dataServicesPtr->GetRegionsProfStats().MakeRegionPlt(tempSliceFab, 0,
+                                          allDataSizeH, sizePerRegionV, regionBoxes);
+  //dataServicesPtr->GetRegionsProfStats().MakeRegionFArrayBox(tempSliceFab, allDataSizeH,
+  //                                                          sizePerRegionV, regionBoxes);
 
   // New methodology, dispatching to RegionsProfStats().MakeRegionBoxes() to get the
   //    data from the appropriate rank. All IO handled in dispatch.
-  amrex::DataServices::Dispatch(amrex::DataServices::MakeRegionPictureRequest,
+  /*amrex::DataServices::Dispatch(amrex::DataServices::MakeRegionPictureRequest,
                                 &dataServicesPtr[0],
                                 allDataSizeH,
                                 sizePerRegionV,
                                 (void *) &(regionBoxes),
                                 (void *) &(calcTimeRange));
   dataServicesPtr->GetProfData().GetRegionsProfStats().MakeRegionFArrayBox(tempSliceFab, allDataSizeH,
-                                                                           sizePerRegionV, regionBoxes);
+                                                                           sizePerRegionV, regionBoxes);*/
 
 
   for(int i(0); i < regionBoxes.size(); ++i) {

@@ -44,6 +44,8 @@ using std::cout;
 using std::cerr;
 using std::endl;
 
+using namespace amrex; 
+
 #ifndef FALSE
 #define FALSE false
 #endif

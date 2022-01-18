@@ -1,23 +1,23 @@
 ### ------------------------------------------------------
 ### GNUmakefile for Amrvis
 ### ------------------------------------------------------
-AMREX_HOME ?= ../amrex
+AMREX_HOME ?= ../../repos/amrex
 
 PRECISION = FLOAT
 PRECISION = DOUBLE
 
-PROFILE       = FALSE
+PROFILE       = TRUE
 TRACE_PROFILE = FALSE
-COMM_PROFILE  = FALSE
+COMM_PROFILE  = TRUE
 
-COMP      = intel
+#COMP      = intel
 COMP      = gnu
 
 DEBUG     = FALSE
 #DEBUG     = TRUE
 
-DIM       = 1
-DIM       = 3
+#DIM       = 1
+#DIM       = 3
 DIM       = 2
 
 USE_ARRAYVIEW = TRUE
@@ -35,7 +35,7 @@ USE_PARALLELVOLRENDER = TRUE
 USE_PARALLELVOLRENDER = FALSE
 
 USE_PROFPARSER = TRUE
-USE_PROFPARSER = FALSE
+#USE_PROFPARSER = FALSE
 
 ifeq ($(DIM), 1)
   USE_PROFPARSER = FALSE
@@ -76,7 +76,7 @@ ifneq ($(which_site), unknown)
   INCLUDE_LOCATIONS += /usr/include/Xm
   INCLUDE_LOCATIONS += /usr/include/
 
-  LIBRARIES += -lXm -lXt -lXext -lSM -lICE -lXpm -lX11
+  LIBRARIES += -lXm -lXt -lXext -lSM -lICE -lX11
 
   ifeq ($(which_computer), edison)
     ifeq ($(USE_MPI), TRUE)
@@ -102,7 +102,7 @@ endif
 ifeq ($(MACHINE), CYGWIN_NT)
   INCLUDE_LOCATIONS += /usr/X11R6/include
   LIBRARY_LOCATIONS += /usr/X11R6/lib
-  LIBRARIES += -lXm -lXt -lSM -lICE -lXpm -lX11
+  LIBRARIES += -lXm -lXt -lSM -lICE -lX11
 endif
 
 # last chance catch-all
@@ -132,7 +132,7 @@ ifeq ($(which_site), unknown)
     LIBRARY_LOCATIONS += /usr/lib64
   endif
 
-  LIBRARIES += -lXm -lXt -lXext -lSM -lICE -lXpm -lX11
+  LIBRARIES += -lXm -lXt -lXext -lSM -lICE -lX11
 endif
 
 
